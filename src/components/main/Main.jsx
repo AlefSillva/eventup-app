@@ -17,9 +17,9 @@ export default function Main() {
                     Participe
                 </span> 
             </div>
-            <h2 className={style.main_title}>A Vida Acontece <span className={style.main_highlight}>Ao Vivo</span></h2>
+            <h2 className={style.main_title}>Descubra Seu Próximo Evento</h2>
+            {/* aqui colocarei um input de busca mais tarde. */}
 
-            <Login />
         </main>
     )
 }
