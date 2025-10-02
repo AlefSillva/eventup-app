@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+:root {
+  /* para botões de ação, links e destaques */
+  --primary-color: #F79256;
+  --primary-color-strong: #ff5500;
+;
+
+  /* para textos principais e fundos escuros */
+  --main-text-color: #2B2D42;
+
+  /* para elementos de sucesso, confirmações ou categorias */
+  --destaque-color1: #00BFA5;
+  --destaque-color1-strong: #009682;
+
+/* para elementos informativos ou secundários */
+  --destaque-color2: #4FC3F7;
+  --destaque-color2-strong: #1db6fd;
+
+/* para outros detalhes de interface ou categorias */
+  --destaque-color3: #9C27B0;
+
+  /* para fundos e divisórias */
+  --background-color: #d2d6dacc;
+
+  --secondary-background-color: #FBFBFB;
+
+}
