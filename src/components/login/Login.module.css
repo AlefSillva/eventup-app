@@ -25,7 +25,7 @@
 }
 
 .login_welcome_title {
-    font-size: 1.7rem;    
+    font-size: 1.6rem;    
 }
 
 .login_slogan{
@@ -54,7 +54,6 @@
     width: 100%;
     border: 1px solid #c7c1c7;
     background-color: var(--secondary-background-color);
-    color: #c7c1c7;
     border-radius: 10px;
     padding: 12px;
     margin-top: 5px;

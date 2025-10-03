@@ -1,7 +1,7 @@
 import style from "./Main.module.css";
-import Login from "../login/Login";
+import EventList from "../event_list/EventList";
 
-export default function Main() { 
+export default function Main({ events, onEventClick }) { 
     return (
         <main className={style.main_container}>
             <div className={style.main_description}>
@@ -19,6 +19,8 @@ export default function Main() {
             </div>
             <h2 className={style.main_title}>Descubra Seu Próximo Evento</h2>
             {/* aqui colocarei um input de busca mais tarde. */}
+
+            <EventList events={events} onEventClick={onEventClick} />
 
         </main>
     )

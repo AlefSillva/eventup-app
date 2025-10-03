@@ -17,11 +17,11 @@ export default function Header({ onPageChange }) {
                 <img src={logo } alt="EventUp Logo" />
             </h1>
 
-            {isMenuOpen && (
+            {isMenuOpen && ( 
                 <nav className={styles.menu_toggle_links}>
                     <a onClick={() => onPageChange(1)}>Home</a>
-                    <a onClick={() => onPageChange(2)}>Events</a>
-                    <a onClick={() => onPageChange(3)}>Profile</a>
+                    <a onClick={(e) => e.preventDefault()}>Events</a>
+                    <a onClick={(e) => e.preventDefault()}>Profile</a>
                 </nav>
             )}
 
