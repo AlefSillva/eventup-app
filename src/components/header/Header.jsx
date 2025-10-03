@@ -18,17 +18,21 @@ export default function Header({ onPageChange }) {
             </h1>
 
             {isMenuOpen && (
-                <nav>
+                <nav className={styles.menu_toggle_links}>
                     <a onClick={() => onPageChange(1)}>Home</a>
                     <a onClick={() => onPageChange(2)}>Events</a>
                     <a onClick={() => onPageChange(3)}>Profile</a>
                 </nav>
             )}
 
-            <button className={styles.menu_toggle}
+            <button
+                className={` ${styles.menu_toggle} ${isMenuOpen ? styles.menu_open : ''}`
+                }
                 onClick={toggleMenu}
             >
-                <span className="material-symbols-outlined">menu</span>
+                <span className="material-symbols-outlined">
+                    {isMenuOpen ? "close" : "menu"}
+                </span>
             </button>
         </header>
     )

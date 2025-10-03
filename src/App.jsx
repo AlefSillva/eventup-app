@@ -5,13 +5,13 @@ import Main from "./components/main/Main";
 import Login from "./components/login/Login";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [page, setPages] = useState(0);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [page, setPages] = useState(1);
 
   const pages = [
     <Login />,
-    // <Cadastro />,
     <Main />,
+    // <Cadastro />,
     // <Profile />
   ]
 
