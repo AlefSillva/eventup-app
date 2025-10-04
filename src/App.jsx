@@ -3,6 +3,7 @@ import style from "./App.module.css";
 import Header from "./components/header/Header";
 import Main from "./components/main/Main";
 import Login from "./components/login/Login";
+import Cadastro from "./components/cadastro/Cadastro";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -58,16 +59,23 @@ function App() {
     }
   };
 
+  const handleNavigateToRegister = () => {
+    setPage(2); 
+  };
+
+  const handleNavigateToLogin = () => {
+    setPage(0); 
+  };
+
   const pages = [
-    <Login onLogin={handleLogin} />,
+    <Login onLogin={handleLogin} onNavigateToRegister={handleNavigateToRegister} />,
+    <Cadastro onNavigateToLogin={handleNavigateToLogin} />,
     <Main events={eventList} onEventClick={handleEventClick} />,
-    // <Cadastro />,
-    // <Profile />
   ];
 
   return (
     <div className={style.App_container}>
-      {page > 0 && <Header onPageChange={handlePageChange} />}
+      {page > 1 && <Header onPageChange={handlePageChange} />}
       
       {pages[page]}
 
