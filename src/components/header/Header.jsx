@@ -1,39 +1,41 @@
-import styles from './Header.module.css';
-import logo from '../../assets/eventUp-logo.png';
-import { useState } from 'react';
+import styles from "./Header.module.css";
+import logo from "../../assets/eventUp-logo.png";
+import { useState } from "react";
 
 export default function Header({ onPageChange }) {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-    const toggleMenu = () => {
-        setIsMenuOpen(!isMenuOpen);
-    }
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
-    return (
-        <header
-            className={styles.header_container}
+  return (
+    <header className={styles.header_container}>
+      <h1 className={styles.logo}>
+        <img src={logo} alt="EventUp Logo" />
+      </h1>
+
+
+        <nav
+          className={`${styles.menu_toggle_links} ${
+            isMenuOpen ? styles.show : ""
+          }`}
         >
-            <h1 className={styles.logo}>
-                <img src={logo } alt="EventUp Logo" />
-            </h1>
+          <a onClick={() => onPageChange(2)}>Home</a>
+          <a onClick={(e) => e.preventDefault()}>Events</a>
+          <a onClick={(e) => e.preventDefault()}>Profile</a>
+        </nav>
 
-            {isMenuOpen && ( 
-                <nav className={styles.menu_toggle_links}>
-                    <a onClick={() => onPageChange(2)}>Home</a>
-                    <a onClick={(e) => e.preventDefault()}>Events</a>
-                    <a onClick={(e) => e.preventDefault()}>Profile</a>
-                </nav>
-            )}
-
-            <button
-                className={` ${styles.menu_toggle} ${isMenuOpen ? styles.menu_open : ''}`
-                }
-                onClick={toggleMenu}
-            >
-                <span className="material-symbols-outlined">
-                    {isMenuOpen ? "close" : "menu"}
-                </span>
-            </button>
-        </header>
-    )
+      <button
+        className={` ${styles.menu_toggle} ${
+          isMenuOpen ? styles.menu_open : ""
+        }`}
+        onClick={toggleMenu}
+      >
+        <span className="material-symbols-outlined">
+          {isMenuOpen ? "close" : "menu"}
+        </span>
+      </button>
+    </header>
+  );
 }

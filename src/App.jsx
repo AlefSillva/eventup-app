@@ -7,7 +7,7 @@ import Cadastro from "./components/cadastro/Cadastro";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(2);
 
   const eventList = [
     {

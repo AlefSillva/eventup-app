@@ -13,7 +13,7 @@ export default function Login({ onLogin, onNavigateToRegister }) {
     e.preventDefault();
 
     if (email === "teste@test.com" && password === "1234") {
-      onLogin(); 
+      onLogin();
     } else {
       alert("Email ou senha incorretos. Tente novamente.");
     }
@@ -56,7 +56,11 @@ export default function Login({ onLogin, onNavigateToRegister }) {
           Esqueci minha senha
         </a>
 
-        <a onClick={onNavigateToRegister} className={style.switch_form_link} style={{cursor: 'pointer', marginTop: '15px'}}>
+        <a
+          onClick={onNavigateToRegister}
+          className={style.switch_form_link}
+          style={{ cursor: "pointer", marginTop: "15px" }}
+        >
           Não tem uma conta? Cadastre-se
         </a>
       </form>

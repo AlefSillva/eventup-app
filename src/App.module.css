@@ -1,5 +1,4 @@
 
-
 .App_container {
   background-color: var(--background-color);
   min-height: 100vh;
@@ -9,6 +8,8 @@
   align-items: center;
   gap: 20px;
 }
+
+
 
 
 

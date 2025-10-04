@@ -15,13 +15,13 @@ export default function EventCard({
         <img src={linkImage} alt={event} />
       </div>
       <div className={style.event_card_info_container}>
-        <p className={style.event_card_date}>
+        <p className={style.event_card_infos}>
           <span className={style.event_card_subtitle}>Data:</span> {date}
         </p>
-        <p className={style.event_card_local}>
+        <p className={style.event_card_infos}>
           <span className={style.event_card_subtitle}>Local:</span> {local}
         </p>
-        <p className={style.event_card_type}>
+        <p className={style.event_card_infos}>
           <span className={style.event_card_subtitle}>Categoria:</span>  {type}
         </p>
       </div>
