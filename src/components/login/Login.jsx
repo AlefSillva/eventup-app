@@ -2,9 +2,9 @@ import style from "./Login.module.css";
 import Logo from "../../assets/eventUp-logo.png";
 import { useState } from "react";
 
-export default function Login({ onLogin }) {
-  const [email, setEmail] = useState(null);
-  const [password, setPassword] = useState(null);
+export default function Login({ onLogin, onNavigateToRegister }) {
+  const [email, setEmail] = useState("teste@test.com");
+  const [password, setPassword] = useState("1234");
 
   const onChangeEmail = (e) => setEmail(e.target.value);
   const onChangePassword = (e) => setPassword(e.target.value);
@@ -15,7 +15,7 @@ export default function Login({ onLogin }) {
     if (email === "teste@test.com" && password === "1234") {
       onLogin(); 
     } else {
-      alert("Email e senha para teste: teste@test.com / 1234");
+      alert("Email ou senha incorretos. Tente novamente.");
     }
   };
 
@@ -54,6 +54,10 @@ export default function Login({ onLogin }) {
 
         <a href="#" className={style.forgot_password}>
           Esqueci minha senha
+        </a>
+
+        <a onClick={onNavigateToRegister} className={style.switch_form_link} style={{cursor: 'pointer', marginTop: '15px'}}>
+          Não tem uma conta? Cadastre-se
         </a>
       </form>
     </section>

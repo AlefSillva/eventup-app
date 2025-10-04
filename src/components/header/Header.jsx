@@ -19,7 +19,7 @@ export default function Header({ onPageChange }) {
 
             {isMenuOpen && ( 
                 <nav className={styles.menu_toggle_links}>
-                    <a onClick={() => onPageChange(1)}>Home</a>
+                    <a onClick={() => onPageChange(2)}>Home</a>
                     <a onClick={(e) => e.preventDefault()}>Events</a>
                     <a onClick={(e) => e.preventDefault()}>Profile</a>
                 </nav>

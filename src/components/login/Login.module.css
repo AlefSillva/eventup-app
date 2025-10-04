@@ -91,6 +91,6 @@
     text-decoration: none;
 }
 
-.forgot_password:hover {
+.forgot_password:hover, .switch_form_link:hover {
     text-decoration: underline;
 }

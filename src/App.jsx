@@ -48,7 +48,7 @@ function App() {
 
   const handleLogin = () => {
     setIsLoggedIn(true);
-    setPage(1);
+    setPage(2);
   };
 
   const handlePageChange = (newPage) => {
@@ -60,7 +60,7 @@ function App() {
   };
 
   const handleNavigateToRegister = () => {
-    setPage(2); 
+    setPage(1); 
   };
 
   const handleNavigateToLogin = () => {
