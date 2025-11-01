@@ -1,16 +1,53 @@
-# React + Vite
+# 🎉 EventUp
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+EventUp é uma aplicação web voltada para a **gestão colaborativa de eventos comunitários**.  
+O objetivo é permitir que usuários **criem, descubram e participem** de eventos locais de forma simples e interativa.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Tecnologias Utilizadas
 
-## React Compiler
+- **ReactJS (Vite)**
+- **JavaScript (ES6+)**
+- **CSS Modules**
+- **Context API** para gerenciamento de estado
+- **Hooks (useState, useContext, useEffect)**
 
-The React Compiler is not enabled on this template. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🧩 Funcionalidades Principais
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Cadastro e login de usuários  
+- Criação e listagem de eventos  
+- Exibição de eventos em cards dinâmicos  
+- Interação com os eventos (visualizar detalhes, clicar, navegar)  
+- Contexto global para gerenciar os eventos
+
+---
+
+## 📱 Responsividade
+
+A aplicação foi desenvolvida para ser **responsiva**, adaptando-se bem a diferentes tamanhos de tela, tanto em **desktop** quanto em **mobile**.
+
+---
+
+## 🔧 Próximas Implementações (Backlog)
+
+- [ ] Busca de eventos por nome ou categoria  
+- [ ] Filtro de eventos por localização  
+- [ ] Funcionalidade de favoritar eventos  
+
+---
+
+## 🧠 Metodologia de Desenvolvimento
+
+O projeto é desenvolvido seguindo a metodologia **Scrum**, dividido em etapas (Sprints/TPs):  
+- **TP1:** Planejamento e documentação  
+- **TP2:** Estrutura inicial e prototipação  
+- **TP3:** Componentização e integração de dados  
+- **TP4:** Funcionalidades avançadas e testes  
+- **TP5:** Finalização e otimização nativa  
+
+---
+
+
