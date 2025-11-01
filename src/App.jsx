@@ -4,46 +4,15 @@ import Header from "./components/header/Header";
 import Main from "./components/main/Main";
 import Login from "./components/login/Login";
 import Cadastro from "./components/cadastro/Cadastro";
+import EventsProvider from "./components/contexts/events/EventsProvider";
+import { EventsContext } from "./components/contexts/events/EventsContext";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [page, setPage] = useState(2);
 
-  const eventList = [
-    {
-      name: "Show de Rock",
-      linkImage: "https://picsum.photos/400/200?random=1",
-      local: "Avenida Aleatória Um, 123 - SP",
-      date: "10/10/2025",
-      type: "Música",
-    },
-    {
-      name: "Feira de Tecnologia",
-      linkImage: "https://picsum.photos/400/200?random=2",
-      local: "Avenida Aleatória Dois, 456 - SP",
-      date: "12/10/2025",
-      type: "Tech",
-    },
-    {
-      linkImage: "https://picsum.photos/400/200?random=3",
-      name: "Aula de Yoga",
-      local: "Avenida Aleatória Três, 789 - SP",
-      date: "15/10/2025",
-      type: "Saúde",
-    },
-    {
-      linkImage: "https://picsum.photos/400/200?random=4",
-      name: "Palestra Motivacional",
-      local: "Avenida Aleatória Quatro, 101 - SP",
-      date: "18/10/2025",
-      type: "Educação",
-    },
-  ];
-
   const handleEventClick = () => {
-    if (!isLoggedIn) {
-      setPage(0);
-    }
+    if (!isLoggedIn) setPage(0);
   };
 
   const handleLogin = () => {
@@ -59,27 +28,22 @@ function App() {
     }
   };
 
-  const handleNavigateToRegister = () => {
-    setPage(1); 
-  };
-
-  const handleNavigateToLogin = () => {
-    setPage(0); 
-  };
-
-  const pages = [
-    <Login onLogin={handleLogin} onNavigateToRegister={handleNavigateToRegister} />,
-    <Cadastro onNavigateToLogin={handleNavigateToLogin} />,
-    <Main events={eventList} onEventClick={handleEventClick} />,
-  ];
-
+  const handleNavigateToRegister = () => setPage(1);
+  const handleNavigateToLogin = () => setPage(0);
+  
+  
   return (
-    <div className={style.App_container}>
-      {page > 1 && <Header onPageChange={handlePageChange} />}
-      
-      {pages[page]}
+    <EventsProvider>
+      <div className={style.App_container}>
+        {page > 1 && <Header onPageChange={handlePageChange} />}
 
-    </div>
+        {page === 0 && <Login onLogin={handleLogin} onNavigateToRegister={handleNavigateToRegister} />}
+
+        {page === 1 && <Cadastro onNavigateToLogin={handleNavigateToLogin} />}
+
+        {page === 2 && <Main onEventClick={handleEventClick} />}
+      </div>
+    </EventsProvider>
   );
 }
 
