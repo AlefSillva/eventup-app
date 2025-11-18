@@ -1,19 +1,19 @@
 import style from "./Login.module.css";
 import Logo from "../../assets/eventUp-logo.png";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-export default function Login({ onLogin, onNavigateToRegister }) {
+export default function Login({ onLogin }) {
   const [email, setEmail] = useState("teste@test.com");
   const [password, setPassword] = useState("1234");
-
-  const onChangeEmail = (e) => setEmail(e.target.value);
-  const onChangePassword = (e) => setPassword(e.target.value);
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (email === "teste@test.com" && password === "1234") {
       onLogin();
+      navigate("/");
     } else {
       alert("Email ou senha incorretos. Tente novamente.");
     }
@@ -26,8 +26,7 @@ export default function Login({ onLogin, onNavigateToRegister }) {
       <div className={style.login_welcome}>
         <h2 className={style.login_welcome_title}>Bem-Vindo ao EventUp!</h2>
         <p className={style.login_slogan}>
-          A vida acontece{" "}
-          <span className={style.login_highlight}>Ao Vivo.</span>
+          A vida acontece <span className={style.login_highlight}>Ao Vivo.</span>
         </p>
       </div>
 
@@ -37,7 +36,7 @@ export default function Login({ onLogin, onNavigateToRegister }) {
           type="text"
           placeholder="Email"
           value={email}
-          onChange={onChangeEmail}
+          onChange={(e) => setEmail(e.target.value)}
         />
 
         <input
@@ -45,19 +44,19 @@ export default function Login({ onLogin, onNavigateToRegister }) {
           type="text"
           placeholder="Senha"
           value={password}
-          onChange={onChangePassword}
+          onChange={(e) => setPassword(e.target.value)}
         />
 
         <button type="submit" className={style.login_button}>
           Entrar
         </button>
 
-        <a href="#" className={style.forgot_password}>
+        <a className={style.forgot_password} href="#">
           Esqueci minha senha
         </a>
 
         <a
-          onClick={onNavigateToRegister}
+          onClick={() => navigate("/register")}
           className={style.switch_form_link}
           style={{ cursor: "pointer", marginTop: "15px" }}
         >

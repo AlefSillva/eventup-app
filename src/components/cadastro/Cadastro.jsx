@@ -1,17 +1,14 @@
 import style from "./Cadastro.module.css";
 import Logo from "../../assets/eventUp-logo.png";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-export default function Cadastro({ onNavigateToLogin }) {
+export default function Cadastro() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-
-  const onChangeName = (e) => setName(e.target.value);
-  const onChangeEmail = (e) => setEmail(e.target.value);
-  const onChangePassword = (e) => setPassword(e.target.value);
-  const onChangeConfirmPassword = (e) => setConfirmPassword(e.target.value);
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -28,7 +25,7 @@ export default function Cadastro({ onNavigateToLogin }) {
 
     console.log("Novo usuário cadastrado:", { name, email });
     alert("Cadastro realizado com sucesso!");
-    onNavigateToLogin();
+    navigate("/login");
   };
 
   return (
@@ -38,8 +35,7 @@ export default function Cadastro({ onNavigateToLogin }) {
       <div className={style.cadastro_welcome}>
         <h2 className={style.cadastro_welcome_title}>Crie sua Conta</h2>
         <p className={style.cadastro_slogan}>
-          E descubra seu próximo{" "}
-          <span className={style.login_highlight}>evento.</span>
+          E descubra seu próximo <span className={style.login_highlight}>evento.</span>
         </p>
       </div>
 
@@ -49,7 +45,7 @@ export default function Cadastro({ onNavigateToLogin }) {
           type="text"
           placeholder="Nome Completo"
           value={name}
-          onChange={onChangeName}
+          onChange={(e) => setName(e.target.value)}
         />
 
         <input
@@ -57,7 +53,7 @@ export default function Cadastro({ onNavigateToLogin }) {
           type="email"
           placeholder="Email"
           value={email}
-          onChange={onChangeEmail}
+          onChange={(e) => setEmail(e.target.value)}
         />
 
         <input
@@ -65,7 +61,7 @@ export default function Cadastro({ onNavigateToLogin }) {
           type="password"
           placeholder="Senha"
           value={password}
-          onChange={onChangePassword}
+          onChange={(e) => setPassword(e.target.value)}
         />
 
         <input
@@ -73,14 +69,18 @@ export default function Cadastro({ onNavigateToLogin }) {
           type="password"
           placeholder="Confirmar Senha"
           value={confirmPassword}
-          onChange={onChangeConfirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
         />
 
         <button type="submit" className={style.cadastro_button}>
           Cadastrar
         </button>
 
-        <a onClick={onNavigateToLogin} className={style.switch_form_link} style={{cursor: 'pointer'}}>
+        <a
+          onClick={() => navigate("/login")}
+          className={style.switch_form_link}
+          style={{ cursor: "pointer" }}
+        >
           Já tem uma conta? Faça login
         </a>
       </form>
