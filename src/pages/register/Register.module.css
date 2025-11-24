@@ -1,4 +1,4 @@
-.cadastro_container {
+.register_container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -17,28 +17,28 @@
     margin-bottom: 10px;
 }
 
-.cadastro_welcome {
+.register_welcome {
     width: 100%;
     color: var(--main-text-color);
     text-align: center;
     line-height: 1.7rem;
 }
 
-.cadastro_welcome_title {
+.register_welcome_title {
     font-size: 1.6rem;
 }
 
-.cadastro_slogan {
+.register_slogan {
     font-size: 1.2rem;
 }
 
 
-.cadastro_highlight {
+.register_highlight {
     color: var(--primary-color);
     font-weight: 600;
 }
 
-.cadastro_form {
+.register_form {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -50,7 +50,7 @@
     gap: 20px;
 }
 
-.cadastro_input {
+.register_input {
     width: 100%;
     border: 1px solid #c7c1c7;
     background-color: var(--secondary-background-color);
@@ -60,7 +60,7 @@
     font-size: 1rem;
 }
 
-.cadastro_button {
+.register_button {
     width: 100%;
     padding: 10px 15px;
     background-color: #EB6141;
@@ -73,12 +73,12 @@
     transition: 0.3s ease, box-shadow 0.3s ease;
 }
 
-.cadastro_button:hover {
+.register_button:hover {
     background-color: var(--destaque-color1-strong);
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.cadastro_button:active {
+.register_button:active {
     transition: 0.1s ease;
     transform: scale(0.98);
 }
@@ -96,7 +96,7 @@
 }
 
 @media (min-width: 608px) {
-    .cadastro_container {
+    .register_container {
         max-width: 400px;
         margin-top: 80px;
     }

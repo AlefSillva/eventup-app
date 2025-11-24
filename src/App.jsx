@@ -1,11 +1,23 @@
 import { useState } from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import style from "./App.module.css";
 import Header from "./components/header/Header";
-import Main from "./components/main/Main";
-import Login from "./components/login/Login";
-import Cadastro from "./components/cadastro/Cadastro";
-import EventsProvider from "./components/contexts/events/EventsProvider";
+
+import Login from "./pages/login/Login";
+import Register from "./pages/register/Register";
+import Profile from "./pages/profile/Profile";
+import Events from "./pages/events/Events";
+import EventDetails from "./pages/event_details/EventDetails";
+import Home from "./pages/home/Home";
+import Favorites from "./pages/favorites/Favorites";
+
+import EventsProvider from "./contexts/events/EventsProvider";
+import FavoritesProvider from "./contexts/favorites/FavoritesProvider";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -14,42 +26,63 @@ function App() {
 
   return (
     <EventsProvider>
-      <Router>
-        <div className={style.App_container}>
-          {isLoggedIn && <Header />}
+      <FavoritesProvider>
+        <Router>
+          <div className={style.App_container}>
+            {isLoggedIn && <Header />}
 
-          <Routes>
-            <Route
-              path="/login"
-              element={!isLoggedIn ? <Login onLogin={handleLogin} /> : <Navigate to="/" />}
-            />
+            <Routes>
+              <Route
+                path="/login"
+                element={
+                  !isLoggedIn ? (
+                    <Login onLogin={handleLogin} />
+                  ) : (
+                    <Navigate to="/" />
+                  )
+                }
+              />
 
-            <Route
-              path="/register"
-              element={!isLoggedIn ? <Cadastro /> : <Navigate to="/" />}
-            />
+              <Route
+                path="/register"
+                element={!isLoggedIn ? <Register /> : <Navigate to="/" />}
+              />
 
-            <Route
-              path="/"
-              element={isLoggedIn ? <Main /> : <Navigate to="/login" />}
-            />
+              <Route
+                path="/"
+                element={isLoggedIn ? <Home /> : <Navigate to="/login" />}
+              />
 
-            <Route
-              path="/events"
-              element={isLoggedIn ? <Main /> : <Navigate to="/login" />}
-            />
-            <Route
-              path="/profile"
-              element={isLoggedIn ? <Main /> : <Navigate to="/login" />}
-            />
+              <Route
+                path="/events"
+                element={isLoggedIn ? <Events /> : <Navigate to="/login" />}
+              />
 
-            <Route
-              path="*"
-              element={<Navigate to={isLoggedIn ? "/" : "/login"} />}
-            />
-          </Routes>
-        </div>
-      </Router>
+              <Route
+                path="/event/:id"
+                element={
+                  isLoggedIn ? <EventDetails /> : <Navigate to="/login" />
+                }
+              />
+
+              <Route
+                path="/profile"
+                element={isLoggedIn ? <Profile /> : <Navigate to="/login" />}
+              />
+
+              <Route
+                path="/favorites"
+                element={isLoggedIn ? <Favorites /> : <Navigate to="/login" />}
+              />
+
+              <Route
+                path="*"
+                element={<Navigate to={isLoggedIn ? "/" : "/login"} />}
+              />
+            </Routes>
+          </div>
+        </Router>
+      </FavoritesProvider>
     </EventsProvider>
   );
 }

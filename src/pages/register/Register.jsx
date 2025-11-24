@@ -1,4 +1,4 @@
-import style from "./Cadastro.module.css";
+import style from "./Register.module.css";
 import Logo from "../../assets/eventUp-logo.png";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";

@@ -18,6 +18,7 @@ export default function Header() {
         <Link to="/" onClick={() => setIsMenuOpen(false)}>Home</Link>
         <Link to="/events" onClick={() => setIsMenuOpen(false)}>Events</Link>
         <Link to="/profile" onClick={() => setIsMenuOpen(false)}>Profile</Link>
+        <Link to="/favorites" onClick={() => setIsMenuOpen(false)}>Favorites</Link>
       </nav>
 
       <button
