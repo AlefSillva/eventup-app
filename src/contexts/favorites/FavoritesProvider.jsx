@@ -9,7 +9,7 @@ export default function FavoritesProvider({ children }) {
       const raw = localStorage.getItem(STORAGE_KEY);
       return raw ? JSON.parse(raw) : [];
     } catch (err) {
-      console.error("Erro ao ler favoritos do localStorage:", err);
+      console.error("Erro ao ler favoritos:", err);
       return [];
     }
   });
@@ -18,47 +18,30 @@ export default function FavoritesProvider({ children }) {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(favorites));
     } catch (err) {
-      console.error("Erro ao salvar favoritos no localStorage:", err);
+      console.error("Erro ao salvar favoritos:", err);
     }
   }, [favorites]);
 
-  const _identificador = (event) => event.id ?? event.name;
-
-  const isFavorite = (event) => {
-    const id = _identificador(event);
-    return favorites.some((f) => (_identificador(f) === id));
+  const isFavorite = (id) => {
+    return favorites.some((f) => f.id === id);
   };
 
   const toggleFavorite = (event) => {
-    const id = _identificador(event);
     setFavorites((prev) => {
-      const exists = prev.some((f) => _identificador(f) === id);
+      const exists = prev.some((f) => f.id === event.id);
+
       if (exists) {
-        return prev.filter((f) => _identificador(f) !== id);
-      } else {
-        
-        const minimal = {
-          id: event.id ?? undefined,
-          name: event.name ?? event,
-          linkImage: event.linkImage ?? "",
-          local: event.local ?? "",
-          date: event.date ?? "",
-          type: event.type ?? "",
-        };
-        return [...prev, minimal];
+        return prev.filter((f) => f.id !== event.id);
       }
+
+      return [...prev, event];
     });
   };
 
-  const value = {
-    favorites,
-    toggleFavorite,
-    isFavorite,
-    setFavorites, 
-  };
-
   return (
-    <FavoritesContext.Provider value={value}>
+    <FavoritesContext.Provider
+      value={{ favorites, toggleFavorite, isFavorite }}
+    >
       {children}
     </FavoritesContext.Provider>
   );

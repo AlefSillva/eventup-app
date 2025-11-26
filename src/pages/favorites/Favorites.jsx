@@ -8,22 +8,22 @@ export default function Favorites() {
 
   return (
     <main className={style.favorites_container}>
-      <h2 className={style.favorites_title}>Meus Eventos Favoritos ❤️</h2>
+      <h2 className={style.favorites_title}>My favorite events ❤️</h2>
 
-      {/* Caso não tenha nada favoritado */}
       {favorites.length === 0 && (
         <p className={style.empty_message}>
-          Você ainda não favoritou nenhum evento.
+          You haven't favorited any events yet.
         </p>
       )}
 
       <div className={style.favorites_list}>
-        {favorites.map((event, index) => (
+        {favorites.map((event) => (
           <EventCard
-            key={index}
+            key={event.id}
+            id={event.id}
             event={event.name}
             linkImage={event.linkImage}
-            local={event.local}
+            location={event.location}
             date={event.date}
             type={event.type}
           />

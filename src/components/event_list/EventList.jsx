@@ -1,18 +1,17 @@
 import style from "./EventList.module.css";
 import EventCard from "../event_card/EventCard";
 
-export default function EventList({events, onEventClick}) {
+export default function EventList({events}) {
     return (
         <div className={style.event_list_container}>
-            {events.map((event, i) => (
+            {events.map((event) => (
                 <EventCard 
-                    key={i}
+                    key={event.id}
+                    id={event.id}
                     event={event.name}
                     linkImage={event.linkImage}
-                    local={event.local}
                     date={event.date}
                     type={event.type}
-                    onClick={onEventClick}
                 />
             ))}
         </div>

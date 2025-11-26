@@ -1,6 +1,6 @@
 .details_container {
   width: 100%;
-  max-width: 800px;
+  max-width: 600px;
   margin: 2rem auto;
   padding: 1.5rem;
   background-color: var(--background-color);
@@ -19,16 +19,17 @@
   color: var(--primary-color);
 }
 
-.details_image_container {
+.details_image {
   width: 100%;
   border-radius: 10px;
   overflow: hidden;
 }
 
-.details_image_container img {
+.details_image img {
   width: 100%;
   height: auto;
   display: block;
+  border-radius: 10px;
 }
 
 .details_info {
@@ -68,7 +69,7 @@
   background-color: var(--primary-color-strong);
 }
 
-.favorite_button_details {
+.favorite_btn {
   padding: 10px 16px;
   background-color: var(--destaque-color1);
   color: white;
@@ -77,16 +78,17 @@
   border-radius: 8px;
   cursor: pointer;
   transition: 0.2s ease;
+  width: 200px;
 }
 
-.favorite_button_details:hover {
+.favorite_btn:hover {
   background-color: var(--destaque-color2);
 }
 
 
 @media (min-width: 768px) {
   .details_container {
-    max-width: 900px;
+    max-width: 800px;
     padding: 2rem;
   }
 
@@ -98,4 +100,5 @@
     flex-direction: row;
     gap: 20px;
   }
+
 }

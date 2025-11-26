@@ -19,7 +19,7 @@ export default function EventDetails() {
     <div className={style.details_container}>
       <h2>{event.name}</h2>
 
-      <img src={event.linkImage} alt={event.name} className={style.image} />
+      <img src={event.linkImage} alt={event.name} className={style.details_image} />
 
       <p><strong>Data:</strong> {event.date}</p>
       <p><strong>Local:</strong> {event.local}</p>

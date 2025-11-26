@@ -6,11 +6,11 @@ import { EventsContext } from "../../contexts/events/EventsContext";
 export default function Events() {
   const { events, loading } = useContext(EventsContext);
 
-  if (loading) return <p>Carregando eventos...</p>;
+  if (loading) return <p>Loading events...</p>;
 
   return (
     <main className={style.events_container}>
-      <h2 className={style.events_title}>Todos os Eventos</h2>
+      <h2 className={style.events_title}>All events</h2>
 
       <EventList events={events} />
     </main>
