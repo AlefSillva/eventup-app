@@ -14,10 +14,12 @@ export default function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (login(email, password)) {
+    const result = login(email, password);
+
+    if (result.success) {
       navigate("/");
     } else {
-      alert("Incorrect email or password. Please try again.");
+      alert(result.message);
     }
   };
 
@@ -62,7 +64,7 @@ export default function Login() {
           className={style.switch_form_link}
           style={{ cursor: "pointer", marginTop: "15px" }}
         >
-          Don’t have an account? Register now
+          Don't have an account? Register now
         </a>
       </form>
     </section>
