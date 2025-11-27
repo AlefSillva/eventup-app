@@ -9,7 +9,7 @@ export default function FavoritesProvider({ children }) {
       const raw = localStorage.getItem(STORAGE_KEY);
       return raw ? JSON.parse(raw) : [];
     } catch (err) {
-      console.error("Erro ao ler favoritos:", err);
+      console.error("Error reading favorites:", err);
       return [];
     }
   });
@@ -18,7 +18,7 @@ export default function FavoritesProvider({ children }) {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(favorites));
     } catch (err) {
-      console.error("Erro ao salvar favoritos:", err);
+      console.error("Error saving favorites:", err);
     }
   }, [favorites]);
 
