@@ -1,21 +1,23 @@
 import style from "./Login.module.css";
 import Logo from "../../assets/eventUp-logo.png";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../contexts/auth/AuthContext";
 
-export default function Login({ onLogin }) {
+export default function Login() {
   const [email, setEmail] = useState("teste@test.com");
   const [password, setPassword] = useState("1234");
   const navigate = useNavigate();
 
+  const { login } = useContext(AuthContext);
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (email === "teste@test.com" && password === "1234") {
-      onLogin();
+    if (login(email, password)) {
       navigate("/");
     } else {
-      alert("Email ou senha incorretos. Tente novamente.");
+      alert("Incorrect email or password. Please try again.");
     }
   };
 
@@ -26,8 +28,7 @@ export default function Login({ onLogin }) {
       <div className={style.login_welcome}>
         <h2 className={style.login_welcome_title}>Welcome to EventUp!</h2>
         <p className={style.login_slogan}>
-          A vida acontece{" "}
-          <span className={style.login_highlight}>Ao Vivo.</span>
+          Life happens <span className={style.login_highlight}>Live.</span>
         </p>
       </div>
 
@@ -42,18 +43,18 @@ export default function Login({ onLogin }) {
 
         <input
           className={style.login_input}
-          type="text"
-          placeholder="Senha"
+          type="password"
+          placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
 
         <button type="submit" className={style.login_button}>
-          Entrar
+          Sign in
         </button>
 
         <a className={style.forgot_password} href="#">
-          Esqueci minha senha
+          Forgot my password
         </a>
 
         <a
@@ -61,7 +62,7 @@ export default function Login({ onLogin }) {
           className={style.switch_form_link}
           style={{ cursor: "pointer", marginTop: "15px" }}
         >
-          Não tem uma conta? Cadastre-se
+          Don’t have an account? Register now
         </a>
       </form>
     </section>
