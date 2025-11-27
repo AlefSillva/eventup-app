@@ -1,13 +1,14 @@
-import { useState } from "react";
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   Navigate,
 } from "react-router-dom";
-import style from "./App.module.css";
-import Header from "./components/header/Header";
+import { useContext } from "react";
 
+import style from "./App.module.css";
+
+import Header from "./components/header/Header";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
 import Profile from "./pages/profile/Profile";
@@ -18,29 +19,24 @@ import Favorites from "./pages/favorites/Favorites";
 
 import EventsProvider from "./contexts/events/EventsProvider";
 import FavoritesProvider from "./contexts/favorites/FavoritesProvider";
+import { AuthContext } from "./contexts/auth/AuthContext";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  const handleLogin = () => setIsLoggedIn(true);
+  const { isLoggedIn } = useContext(AuthContext);
 
   return (
     <EventsProvider>
       <FavoritesProvider>
         <Router>
           <div className={style.App_container}>
+
             {isLoggedIn && <Header />}
 
             <Routes>
+
               <Route
                 path="/login"
-                element={
-                  !isLoggedIn ? (
-                    <Login onLogin={handleLogin} />
-                  ) : (
-                    <Navigate to="/" />
-                  )
-                }
+                element={!isLoggedIn ? <Login /> : <Navigate to="/" />}
               />
 
               <Route
@@ -60,9 +56,7 @@ function App() {
 
               <Route
                 path="/event/:id"
-                element={
-                  isLoggedIn ? <EventDetails /> : <Navigate to="/login" />
-                }
+                element={isLoggedIn ? <EventDetails /> : <Navigate to="/login" />}
               />
 
               <Route
@@ -79,6 +73,7 @@ function App() {
                 path="*"
                 element={<Navigate to={isLoggedIn ? "/" : "/login"} />}
               />
+
             </Routes>
           </div>
         </Router>

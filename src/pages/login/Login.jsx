@@ -24,9 +24,10 @@ export default function Login({ onLogin }) {
       <img src={Logo} alt="Logo" className={style.logo} />
 
       <div className={style.login_welcome}>
-        <h2 className={style.login_welcome_title}>Bem-Vindo ao EventUp!</h2>
+        <h2 className={style.login_welcome_title}>Welcome to EventUp!</h2>
         <p className={style.login_slogan}>
-          A vida acontece <span className={style.login_highlight}>Ao Vivo.</span>
+          A vida acontece{" "}
+          <span className={style.login_highlight}>Ao Vivo.</span>
         </p>
       </div>
 
