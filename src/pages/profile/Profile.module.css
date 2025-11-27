@@ -14,7 +14,7 @@
   padding: 1rem;
   background: var(--primary-color-transparent);
   border-radius: 10px;
-  width: 90%;
+  width: 100%;
   max-width: 400px;
   color: var(--main-text-color);
 }

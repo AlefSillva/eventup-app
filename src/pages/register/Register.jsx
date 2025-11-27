@@ -1,55 +1,56 @@
+import { useContext, useState } from "react";
+import { AuthContext } from "../../contexts/auth/AuthContext";
+import { useNavigate } from "react-router-dom";
 import style from "./Register.module.css";
 import Logo from "../../assets/eventUp-logo.png";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
-export default function Cadastro() {
+export default function Register() {
+  const { register } = useContext(AuthContext);
+  const navigate = useNavigate();
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!name || !email || !password || !confirmPassword) {
-      alert("Por favor, preencha todos os campos.");
+    if (!name || !email || !password) {
+      alert("Please fill in all fields!");
       return;
     }
 
-    if (password !== confirmPassword) {
-      alert("As senhas não coincidem!");
-      return;
-    }
+    // ----- Registra o usuário -----
+    register({ name, email, password });
 
-    console.log("Novo usuário cadastrado:", { name, email });
-    alert("Cadastro realizado com sucesso!");
+    alert("Registration successful!");
+
     navigate("/login");
   };
 
   return (
-    <section className={style.cadastro_container}>
+    <section className={style.register_container}>
       <img src={Logo} alt="Logo" className={style.logo} />
 
-      <div className={style.cadastro_welcome}>
-        <h2 className={style.cadastro_welcome_title}>Crie sua Conta</h2>
-        <p className={style.cadastro_slogan}>
-          E descubra seu próximo <span className={style.login_highlight}>evento.</span>
+      <div className={style.register_welcome}>
+        <h2 className={style.register_welcome_title}>Create Your Account</h2>
+        <p className={style.register_slogan}>
+          And discover your next{" "}
+          <span className={style.register_highlight}>event.</span>
         </p>
       </div>
 
-      <form onSubmit={handleSubmit} className={style.cadastro_form}>
+      <form onSubmit={handleSubmit} className={style.register_form}>
         <input
-          className={style.cadastro_input}
+          className={style.register_input}
           type="text"
-          placeholder="Nome Completo"
+          placeholder="Full Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
 
         <input
-          className={style.cadastro_input}
+          className={style.register_input}
           type="email"
           placeholder="Email"
           value={email}
@@ -57,23 +58,15 @@ export default function Cadastro() {
         />
 
         <input
-          className={style.cadastro_input}
+          className={style.register_input}
           type="password"
-          placeholder="Senha"
+          placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <input
-          className={style.cadastro_input}
-          type="password"
-          placeholder="Confirmar Senha"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-        />
-
-        <button type="submit" className={style.cadastro_button}>
-          Cadastrar
+        <button type="submit" className={style.register_button}>
+          Register
         </button>
 
         <a
@@ -81,7 +74,7 @@ export default function Cadastro() {
           className={style.switch_form_link}
           style={{ cursor: "pointer" }}
         >
-          Já tem uma conta? Faça login
+          Already have an account? Sign in
         </a>
       </form>
     </section>

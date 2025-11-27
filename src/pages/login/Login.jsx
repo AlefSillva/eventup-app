@@ -5,8 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/auth/AuthContext";
 
 export default function Login() {
-  const [email, setEmail] = useState("teste@test.com");
-  const [password, setPassword] = useState("1234");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
   const { login } = useContext(AuthContext);

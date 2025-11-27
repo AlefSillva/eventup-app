@@ -4,7 +4,7 @@ import { AuthContext } from "./AuthContext";
 export default function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
 
-  // ----- Carrega usuário do LocalStorage ao abrir o app ------
+  // ----- Carregar usuário do LocalStorage ao abrir o app ------
   useEffect(() => {
     const storedUser = localStorage.getItem("eventup_user");
     if (storedUser) {
@@ -25,7 +25,7 @@ export default function AuthProvider({ children }) {
       return { success: true };
     }
 
-    return { success: false, message: "Email ou senha incorretos" };
+    return { success: false, message: "Email or password incorrect" };
   };
 
   // ----- CADASTRO -----
