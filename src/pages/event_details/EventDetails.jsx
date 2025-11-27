@@ -13,7 +13,7 @@ export default function EventDetails() {
 
   if (!event) return <p>Evento não encontrado.</p>;
 
-  const isFavorite = favorites.some((fav) => fav.name === event.name);
+  const isFavorite = favorites.some((fav) => fav.id === event.id);
 
   return (
     <div className={style.details_container}>
