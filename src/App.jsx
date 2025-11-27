@@ -19,67 +19,72 @@ import Favorites from "./pages/favorites/Favorites";
 
 import EventsProvider from "./contexts/events/EventsProvider";
 import FavoritesProvider from "./contexts/favorites/FavoritesProvider";
+import AuthProvider from "./contexts/auth/AuthProvider";
 import { AuthContext } from "./contexts/auth/AuthContext";
 
-function App() {
-  const { isLoggedIn } = useContext(AuthContext);
+function AppContent() {
+  const { user } = useContext(AuthContext);
+  const isLoggedIn = !!user;
 
   return (
-    <EventsProvider>
-      <FavoritesProvider>
-        <Router>
-          <div className={style.App_container}>
+    <div className={style.App_container}>
+      {isLoggedIn && <Header />}
 
-            {isLoggedIn && <Header />}
+      <Routes>
+        <Route
+          path="/login"
+          element={!isLoggedIn ? <Login /> : <Navigate to="/" />}
+        />
 
-            <Routes>
+        <Route
+          path="/register"
+          element={!isLoggedIn ? <Register /> : <Navigate to="/" />}
+        />
 
-              <Route
-                path="/login"
-                element={!isLoggedIn ? <Login /> : <Navigate to="/" />}
-              />
+        <Route
+          path="/"
+          element={isLoggedIn ? <Home /> : <Navigate to="/login" />}
+        />
 
-              <Route
-                path="/register"
-                element={!isLoggedIn ? <Register /> : <Navigate to="/" />}
-              />
+        <Route
+          path="/events"
+          element={isLoggedIn ? <Events /> : <Navigate to="/login" />}
+        />
 
-              <Route
-                path="/"
-                element={isLoggedIn ? <Home /> : <Navigate to="/login" />}
-              />
+        <Route
+          path="/event/:id"
+          element={isLoggedIn ? <EventDetails /> : <Navigate to="/login" />}
+        />
 
-              <Route
-                path="/events"
-                element={isLoggedIn ? <Events /> : <Navigate to="/login" />}
-              />
+        <Route
+          path="/profile"
+          element={isLoggedIn ? <Profile /> : <Navigate to="/login" />}
+        />
 
-              <Route
-                path="/event/:id"
-                element={isLoggedIn ? <EventDetails /> : <Navigate to="/login" />}
-              />
+        <Route
+          path="/favorites"
+          element={isLoggedIn ? <Favorites /> : <Navigate to="/login" />}
+        />
 
-              <Route
-                path="/profile"
-                element={isLoggedIn ? <Profile /> : <Navigate to="/login" />}
-              />
-
-              <Route
-                path="/favorites"
-                element={isLoggedIn ? <Favorites /> : <Navigate to="/login" />}
-              />
-
-              <Route
-                path="*"
-                element={<Navigate to={isLoggedIn ? "/" : "/login"} />}
-              />
-
-            </Routes>
-          </div>
-        </Router>
-      </FavoritesProvider>
-    </EventsProvider>
+        <Route
+          path="*"
+          element={<Navigate to={isLoggedIn ? "/" : "/login"} />}
+        />
+      </Routes>
+    </div>
   );
 }
 
-export default App;
+export default function App() {
+  return (
+    <AuthProvider>
+      <EventsProvider>
+        <FavoritesProvider>
+          <Router>
+            <AppContent />
+          </Router>
+        </FavoritesProvider>
+      </EventsProvider>
+    </AuthProvider>
+  );
+}
