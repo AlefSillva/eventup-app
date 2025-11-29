@@ -3,10 +3,12 @@ import EventList from "../../components/event_list/EventList";
 import { useContext } from "react";
 import { EventsContext } from "../../contexts/events/EventsContext";
 
-export default function Home({ onEventClick }) {
+export default function Home({ onEventClick, limit }) {
   const { events, loading } = useContext(EventsContext);
 
   if (loading) return <p>Loading events...</p>;
+
+  const eventsToShow = limit ? events.slice(0, limit) : events;
 
   return (
     <main className={style.home_container}>
@@ -15,9 +17,14 @@ export default function Home({ onEventClick }) {
         <span className={style.home_highlight_description2}>Discover</span>
         <span className={style.home_highlight_description3}>Participate</span>
       </div>
-      <h2 className={style.home_title}>Discover Your Next Event</h2>
+      <h2
+        id="homePage"
+        className={style.home_title}
+      >
+        Discover Your Next Event
+      </h2>
 
-      <EventList events={events} onEventClick={onEventClick} />
+      <EventList events={eventsToShow} onEventClick={onEventClick} />
     </main>
   );
 }
