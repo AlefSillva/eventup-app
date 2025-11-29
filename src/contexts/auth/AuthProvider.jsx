@@ -4,7 +4,7 @@ import { AuthContext } from "./AuthContext";
 export default function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
 
-  // ----- Carregar usuário do LocalStorage ao abrir o app ------
+  // ----- Carregar usuário único do LocalStorage ------
   useEffect(() => {
     const storedUser = localStorage.getItem("eventup_user");
     if (storedUser) {
@@ -31,7 +31,7 @@ export default function AuthProvider({ children }) {
   // ----- CADASTRO -----
   const register = (data) => {
     localStorage.setItem("eventup_user", JSON.stringify(data));
-    setUser(data);
+    return { success: true };
   };
 
   // ----- LOGOUT -----
