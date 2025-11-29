@@ -21,11 +21,18 @@ export default function Register() {
     }
 
     // ----- Registra o usuário -----
-    register({ name, email, password });
+    const registerResult = register({ name, email, password });
 
-    alert("Registration successful!");
+    if (!registerResult.success) {
+      alert(register.message || 'Registration failed!');
+      return;
+    } else {
+      alert("Registration successful!");
+      navigate("/login");
+    }
 
-    navigate("/login");
+    
+
   };
 
   return (
@@ -43,6 +50,7 @@ export default function Register() {
       <form onSubmit={handleSubmit} className={style.register_form}>
         <input
           className={style.register_input}
+          id="inputFullName"
           type="text"
           placeholder="Full Name"
           value={name}
@@ -51,6 +59,7 @@ export default function Register() {
 
         <input
           className={style.register_input}
+          id="inputCreateEmail"
           type="email"
           placeholder="Email"
           value={email}
@@ -59,13 +68,14 @@ export default function Register() {
 
         <input
           className={style.register_input}
+          id="inputCreatePassword"
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <button type="submit" className={style.register_button}>
+        <button type="submit" className={style.register_button} id="buttonCreateRegister">
           Register
         </button>
 
