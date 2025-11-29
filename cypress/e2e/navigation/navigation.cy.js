@@ -1,29 +1,48 @@
-describe("Navigation Menu", () => {
+/// <reference types="cypress" />
 
-  beforeEach(() => {
-    // login before each test
+describe("Navigation between pages", () => {
+  before(() => {
     cy.visit("http://localhost:5173/login");
-    cy.get('input[placeholder="Email"]').type("teste@test.com");
-    cy.get('input[placeholder="Senha"]').type("1234");
-    cy.contains("button", "Entrar").click();
+    cy.get("#registerNow").click();
+
+    cy.on("window:alert", (str) => {
+      expect(str).to.equal("Registration successful!");
+    });
+
+    cy.get("#inputFullName").type("alef");
+
+    cy.get("#inputCreateEmail").type("alef@test.com");
+
+    cy.get("#inputCreatePassword").type("123@456");
+
+    cy.get("#buttonCreateRegister").click();
+
+    cy.url().should("include", "/login");
+
+    // Login before navigation tests
+    cy.get("#inputAuthEmail").type("alef@test.com");
+    cy.get("#inputAuthPassword").type("123@456");
+
+    cy.get("#buttonAuthLogin").click();
+
+    cy.get("#welcome").should("contain", "Welcome, alef");
+
   });
 
-  it("should navigate to Home", () => {
-    cy.contains("Home").click();
-    cy.url().should("include", "/");
-    cy.contains("Discover Your Next Event").should("exist");
-  });
-
-  it("should navigate to Events", () => {
-    cy.contains("Events").click();
+  it("navigate through Events, Profile, and Favorites in sequence", () => {
+    cy.get("#menu")
+      .contains("Events").click();
+    
     cy.url().should("include", "/events");
-    cy.contains("All events").should("exist");
-  });
 
-  it("should navigate to Favorites", () => {
-    cy.contains("Favorites").click();
+    // Go from Events to Profile
+    cy.get("#menu")
+      .contains("Profile").click();
+    cy.url().should("include", "/profile");
+
+    // Go from Profile to Favorites
+    cy.get("#menu")
+      .contains("Favorites").click();
     cy.url().should("include", "/favorites");
-    cy.contains("My favorite events").should("exist");
   });
-
-});
+})

@@ -30,5 +30,53 @@
     "location": "Avenida Aleatória Quatro, 101 - SP",
     "date": "18/10/2025",
     "type": "Educação"
+  },
+  {
+    "id": 5,
+    "linkImage": "https://picsum.photos/400/200?random=5",
+    "name": "Festival de Cervejas Artesanais",
+    "location": "Rua das Cervejas, 200 - RJ",
+    "date": "20/10/2025",
+    "type": "Gastronomia"
+  },
+  {
+    "id": 6,
+    "linkImage": "https://picsum.photos/400/200?random=6",
+    "name": "Campeonato de E-Sports",
+    "location": "Arena Gamer, 303 - MG",
+    "date": "25/10/2025",
+    "type": "Tech"
+  },
+  {
+    "id": 7,
+    "linkImage": "https://picsum.photos/400/200?random=7",
+    "name": "Exposição de Arte Moderna",
+    "location": "Museu Central, 55 - SP",
+    "date": "01/11/2025",
+    "type": "Cultura"
+  },
+  {
+    "id": 8,
+    "linkImage": "https://picsum.photos/400/200?random=8",
+    "name": "Workshop de Fotografia",
+    "location": "Estúdio Foto, 10 - BA",
+    "date": "05/11/2025",
+    "type": "Educação"
+  },
+  {
+    "id": 9,
+    "linkImage": "https://picsum.photos/400/200?random=9",
+    "name": "Teatro: Comédia ao Vivo",
+    "location": "Casa de Shows, 111 - SP",
+    "date": "10/11/2025",
+    "type": "Entretenimento"
+  },
+  {
+    "id": 10,
+    "linkImage": "https://picsum.photos/400/200?random=10",
+    "name": "Maratona Urbana 10k",
+    "location": "Parque da Cidade - PR",
+    "date": "15/11/2025",
+    "type": "Esporte"
   }
 ]

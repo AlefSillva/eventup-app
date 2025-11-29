@@ -1,12 +1,23 @@
 import styles from "./Header.module.css";
 import logo from "../../assets/eventUp-logo.png";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "./../../contexts/auth/AuthContext";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const navigate = useNavigate();
+  
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+
+  const { user, logout } = useContext(AuthContext);
+
+  const handleLogout = () => {
+    setIsMenuOpen(false);
+    logout();
+    navigate("/login");
+  };
 
   return (
     <header className={styles.header_container}>
@@ -14,11 +25,24 @@ export default function Header() {
         <img src={logo} alt="EventUp Logo" />
       </h1>
 
-      <nav className={`${styles.menu_toggle_links} ${isMenuOpen ? styles.show : ""}`}>
+      <nav
+        id="menu"
+        className={`${styles.menu_toggle_links} ${isMenuOpen ? styles.show : ""}`}
+      >
         <Link to="/" onClick={() => setIsMenuOpen(false)}>Home</Link>
         <Link to="/events" onClick={() => setIsMenuOpen(false)}>Events</Link>
-        <Link to="/profile" onClick={() => setIsMenuOpen(false)}>Profile</Link>
-        <Link to="/favorites" onClick={() => setIsMenuOpen(false)}>Favorites</Link>
+        
+        {user ? (
+          <>
+            <Link to="/profile" onClick={() => setIsMenuOpen(false)}>Profile</Link>
+            <Link to="/favorites" onClick={() => setIsMenuOpen(false)}>Favorites</Link>
+            <a href="#" onClick={handleLogout}>
+              Logout
+            </a>
+          </>
+        ) : (
+            <Link to="/login" onClick={() => setIsMenuOpen(false)}>Login</Link>
+          )}
       </nav>
 
       <button

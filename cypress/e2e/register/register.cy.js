@@ -1,12 +1,16 @@
 /// <reference types="cypress" />
 
-describe("Login", () => {
+describe("Should register a new user", () => {
+    
   beforeEach(() => {
-    cy.visit("http://localhost:5173/login");
+    cy.visit("http://localhost:5173");
+
     cy.get("#registerNow")
       .click();
-    
-    cy.on('window:alert', (str) => {
+  });
+
+    it("should register a new user successfully", () => { 
+        cy.on('window:alert', (str) => {
             expect(str).to.equal('Registration successful!');
         });
 
@@ -23,19 +27,7 @@ describe("Login", () => {
             .click();
         
         cy.url().should("include", "/login");
-  });
-    
+        
+    })
 
-    it("should login with valid credentials", () => {
-      
-      cy.get('#inputAuthEmail').type("alef@test.com");
-      cy.get('#inputAuthPassword').type("123@456");
-
-      cy.get("#buttonAuthLogin")
-        .click();
-
-      cy.get("#welcome")
-        .should("contain", "Welcome, alef");
-    });
-  });
-  
+});
