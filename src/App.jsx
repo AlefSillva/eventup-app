@@ -15,6 +15,7 @@ import Profile from "./pages/profile/Profile";
 import Events from "./pages/events/Events";
 import EventDetails from "./pages/event_details/EventDetails";
 import Home from "./pages/home/Home";
+import Welcome from "./pages/welcome/Welcome";
 import Favorites from "./pages/favorites/Favorites";
 
 import EventsProvider from "./contexts/events/EventsProvider";
@@ -28,7 +29,7 @@ function AppContent() {
 
   return (
     <div className={style.App_container}>
-      {isLoggedIn && <Header />}
+      <Header />
 
       <Routes>
         <Route
@@ -43,7 +44,7 @@ function AppContent() {
 
         <Route
           path="/"
-          element={isLoggedIn ? <Home /> : <Navigate to="/login" />}
+          element={isLoggedIn ? <Welcome /> : <Home limit={4} />}
         />
 
         <Route
@@ -68,7 +69,7 @@ function AppContent() {
 
         <Route
           path="*"
-          element={<Navigate to={isLoggedIn ? "/" : "/login"} />}
+          element={<Navigate to="/"/>}
         />
       </Routes>
     </div>
