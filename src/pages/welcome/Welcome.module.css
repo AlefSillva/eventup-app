@@ -1,0 +1,92 @@
+.welcome_container {
+    /* Base do Layout - Centralizado, seguindo o padrão da Home */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Alinha no topo para um dashboard */
+    padding: 2.5rem 1rem;
+    gap: 30px;
+    width: 100%;
+    min-height: 100%;
+}
+
+.welcome_title {
+    /* Estilo de Boas-Vindas */
+    color: var(--main-text-color);
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--primary-color);
+    width: 90%;
+    max-width: 600px;
+}
+
+.dashboard_content {
+    /* Área principal dos widgets */
+    display: grid;
+    gap: 20px;
+    width: 100%;
+    max-width: 900px;
+}
+
+/* --- Estilo do Widget de Favoritos --- */
+.favorites_section {
+    background-color: var(--secondary-background-color, #f4f4f4); /* Uma cor de fundo mais clara */
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.favorites_section h2 {
+    color: var(--destaque-color2); /* Usando uma de suas cores de destaque */
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    border-left: 4px solid var(--destaque-color2);
+    padding-left: 10px;
+}
+
+.favorites_list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.favorites_list li {
+    background-color: var(--card-background-color, #ffffff);
+    color: var(--main-text-color);
+    padding: 10px 15px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    border: 1px solid var(--border-color, #ddd);
+    transition: transform 0.2s;
+    font-size: 0.95rem;
+}
+
+.favorites_list li:hover {
+    transform: translateX(5px);
+    border-color: var(--primary-color);
+}
+
+.no_favorites_message {
+    color: var(--secondary-text-color, #666);
+    font-style: italic;
+}
+
+
+/* --- Responsividade --- */
+@media (min-width: 768px) {
+    .welcome_title {
+        font-size: 2rem;
+    }
+    
+    .dashboard_content {
+        /* Layout em duas colunas para telas maiores */
+        grid-template-columns: 1fr; /* Pode mudar para repeat(2, 1fr) se tiver mais widgets */
+        gap: 30px;
+    }
+
+    .favorites_section h2 {
+        font-size: 1.4rem;
+    }
+}
