@@ -37,6 +37,7 @@ export default function Login() {
       <form onSubmit={handleSubmit} className={style.login_form}>
         <input
           className={style.login_input}
+          id="inputAuthEmail"
           type="text"
           placeholder="Email"
           value={email}
@@ -45,13 +46,17 @@ export default function Login() {
 
         <input
           className={style.login_input}
+          id="inputAuthPassword"
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <button type="submit" className={style.login_button}>
+        <button
+          id="buttonAuthLogin"
+          type="submit"
+          className={style.login_button}>
           Sign in
         </button>
 
@@ -62,6 +67,7 @@ export default function Login() {
         <a
           onClick={() => navigate("/register")}
           className={style.switch_form_link}
+          id="registerNow"
           style={{ cursor: "pointer", marginTop: "15px" }}
         >
           Don't have an account? Register now
