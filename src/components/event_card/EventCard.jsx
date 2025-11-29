@@ -38,11 +38,7 @@ export default function EventCard({ id, event, linkImage, location, date, type }
           <p>
             <span className={style.card_label}>Date:</span> {date}
           </p>
-            {location && (
-              <p>
-                <span className={style.card_label}>Location:</span> {location}
-              </p>
-            )}
+            
           <p>
             <span className={style.card_label}>Category:</span> {type}
           </p>
