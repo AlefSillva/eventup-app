@@ -9,15 +9,16 @@ export default function EventDetails() {
   const { events } = useContext(EventsContext);
   const { favorites, toggleFavorite } = useContext(FavoritesContext);
 
-  const event = events[id];
+  const eventId = parseInt(id);
+  const event = events.find((e) => e.id === eventId);
 
   if (!event) return <p>Evento não encontrado.</p>;
 
-  const isFavorite = favorites.some((fav) => fav.id === event.id);
+  const isFavorite = favorites.some((fav) => Number(fav.id) === event.id);
 
   return (
     <div className={style.details_container}>
-      <h2>{event.name}</h2>
+      <h2 className={style.details_title}>{event.name}</h2>
 
       <img src={event.linkImage} alt={event.name} className={style.details_image} />
 
